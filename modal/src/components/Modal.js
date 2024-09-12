@@ -43,6 +43,9 @@ const Modal=({onOpen,onClose})=>{
         }));
 
     }
+    const handleBckgroundClick=()=>{
+        onClose()
+    }
     const handleModalContent=(e)=>{
       e.stopPropagation();
     }
@@ -52,7 +55,7 @@ const Modal=({onOpen,onClose})=>{
     }
 
     return (
-         <div className="modal" onClick={onClose}>
+         <div className="modal" onClick={handleBckgroundClick}>
             <div className="modal-content" onClick={handleModalContent}>
         <h2>Fill Details</h2>
         <form onSubmit={handleSubmit}>
