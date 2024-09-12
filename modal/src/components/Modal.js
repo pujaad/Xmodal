@@ -47,7 +47,7 @@ const Modal=({onOpen,onClose})=>{
     return null;
     }
     return (
-         <div className="modal">
+         <div className="modal" onClick={onClose}>
             <div className="modal-content">
         <h2>Fill Details</h2>
         <form onSubmit={handleSubmit}>
