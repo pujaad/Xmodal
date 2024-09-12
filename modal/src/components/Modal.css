@@ -1,0 +1,21 @@
+.modal{
+    display:flex;
+    justify-content:center;
+    align-items: "center";
+
+}
+.modal-content{
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+
+}
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
