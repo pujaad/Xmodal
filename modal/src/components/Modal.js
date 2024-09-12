@@ -43,12 +43,17 @@ const Modal=({onOpen,onClose})=>{
         }));
 
     }
+    const handleModalContent=(e)=>{
+      e.stopPropagation();
+    }
+
     if(!onOpen){
     return null;
     }
+
     return (
          <div className="modal" onClick={onClose}>
-            <div className="modal-content">
+            <div className="modal-content" onClick={handleModalContent}>
         <h2>Fill Details</h2>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
