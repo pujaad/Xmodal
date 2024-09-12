@@ -12,8 +12,10 @@ function App() {
   return (
     <>
     <h1>User Details Modal</h1>
+    <div>
     <button onClick={handleOpenModal}>Open Form</button>
     <Modal onOpen={isModalOpen} onClose={handleClose}/>
+    </div>
     </>
   );
 }
