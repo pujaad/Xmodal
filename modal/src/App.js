@@ -1,23 +1,42 @@
-import React,{useState} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Modal from "./components/Modal";
 
 function App() {
-  const [isModalOpen,setIsOpenModal]=useState(false)
-  const handleOpenModal=()=>{
-    setIsOpenModal(true)
-  }
-  const handleClose=()=>{
-    setIsOpenModal(false)
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef();
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
-    <h1>User Details Modal</h1>
-    <div>
-    <button onClick={handleOpenModal}>Open Form</button>
-    { isModalOpen &&
-      <Modal onOpen={isModalOpen} onClose={handleClose}/>
-    }
-    </div>
+      <h1>User Details Modal</h1>
+      <div>
+        <button onClick={handleOpenModal}>Open Form</button>
+        {isModalOpen && (
+          <div ref={modalRef}>
+            <Modal onOpen={isModalOpen} onClose={handleClose} />
+          </div>
+        )}
+      </div>
     </>
   );
 }
